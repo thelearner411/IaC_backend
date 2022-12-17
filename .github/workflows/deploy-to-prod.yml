@@ -2,12 +2,12 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure Functions: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python project to Azure Function App - mcollins-assignment-dev-be
+name: Build and deploy Python project to Azure Function App - mcollins-assignment-prod-be
 
 on:
   push:
     branches:
-      - dev
+      - main
   workflow_dispatch:
 
 env:
@@ -62,9 +62,9 @@ jobs:
         uses: Azure/functions-action@v1
         id: deploy-to-function
         with:
-          app-name: 'mcollins-assignment-dev-be'
-          slot-name: 'Development'
+          app-name: 'mcollins-assignment-prod-be'
+          slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_75D74EF681634EADBF793CAE3A5F45BD }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_52D855E95FB5426D8BE7D259B36D2A81 }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
