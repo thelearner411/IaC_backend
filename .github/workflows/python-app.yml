@@ -1,4 +1,4 @@
-name: IEbank backend CICD
+name: IaC Backend DEV CICD
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      ENV: 'Development'
+      ENV: ghci
       DBHOST: secrets.DBHOST
       DBUSER: secrets.DBUSER
       DBPASS: secrets.DBPASS
