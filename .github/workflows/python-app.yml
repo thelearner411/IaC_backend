@@ -1,4 +1,4 @@
-name: IEbank backend CICD
+name: IaC Backend CICD
 
 on:
   push:
@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENV: ghci
-      DBHOST: bla
-      DBUSER: bla
-      DBPASS: bla
-      DBNAME: bla
+      DBHOST: secrets.DBHOST
+      DBUSER: secrets.DBUSER
+      DBPASS: secrets.DBPASS
+      DBNAME: secrets.DBNAME
 
     steps:
     - uses: actions/checkout@v3
@@ -73,7 +73,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
-        app-name: 'jseijas-iebank-backend'
+        app-name: 'mcollins-assignment-prod-be'
         slot-name: 'Production'
 
     
