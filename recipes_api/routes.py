@@ -1,6 +1,6 @@
 from flask import Flask, request
 from recipes_api import db, app
-from recipes_api import recipe
+from recipes_api import Recipe
 
 
 @app.route('/')
@@ -17,24 +17,24 @@ def create_recipe():
     name = request.json['name']
     ingredients = request.json['ingredients']
     steps = request.json['steps']
-    recipe = recipe(name, ingredients, steps)
+    recipe = Recipe(name, ingredients, steps)
     db.session.add(recipe)
     db.session.commit()
     return format_recipe(recipe)
 
 @app.route('/recipes', methods=['GET'])
 def get_recipes():
-    recipes = recipe.query.all()
+    recipes = Recipe.query.all()
     return {'recipes': [format_recipe(recipe) for recipe in recipes]}
 
 @app.route('/recipes/<int:id>', methods=['GET'])
 def get_recipe(id):
-    recipe = recipe.query.get(id)
+    recipe = Recipe.query.get(id)
     return format_recipe(recipe)
 
 @app.route('/recipes/<int:id>', methods=['PUT'])
 def update_recipe(id):
-    recipe = recipe.query.get(id)
+    recipe = Recipe.query.get(id)
     recipe.name = request.json['name']
     recipe.ingredients = request.json['ingredients']
     recipe.steps = request.json['steps']
@@ -45,7 +45,7 @@ def update_recipe(id):
 
 @app.route('/recipes/<int:id>', methods=['DELETE'])
 def delete_recipe(id):
-    recipe = recipe.query.get(id)
+    recipe = Recipe.query.get(id)
     db.session.delete(recipe)
     db.session.commit()
     return format_recipe(recipe)
