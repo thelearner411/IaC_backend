@@ -1,4 +1,4 @@
-name: IaC Backend CICD
+name: IaC Backend DEV CICD
 
 on:
   push:
@@ -73,7 +73,7 @@ jobs:
       uses: azure/webapps-deploy@v2
       id: deploy-to-webapp
       with:
-        app-name: 'mcollins-assignment-prod-be'
-        slot-name: 'Production'
+        app-name: 'mcollins-assignment-dev-be'
+        slot-name: 'Development'
 
     
