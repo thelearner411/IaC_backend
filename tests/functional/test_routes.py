@@ -4,7 +4,7 @@ import pytest
 def test_get_recipes(testing_client):
     """
     GIVEN a Flask application
-    WHEN the '/accounts' page is requested (GET)
+    WHEN the '/recipes' page is requested (GET)
     THEN check the response is valid
     """
     response = testing_client.get('/recipes')

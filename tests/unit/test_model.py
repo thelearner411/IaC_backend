@@ -3,9 +3,9 @@ import pytest
 
 def test_create_recipe():
     """
-    GIVEN a Account model
-    WHEN a new Account is created
-    THEN check the name, account_number, balance, currency, status and created_at fields are defined correctly
+    GIVEN a Recipe model
+    WHEN a new Recipe is created
+    THEN check the name, ingredients, steps, rating, favourite fields are defined correctly
     """
     recipe = Recipe('Milkshake', 'milk', 'Pour milk.')
     assert recipe.name == 'Milkshake'
