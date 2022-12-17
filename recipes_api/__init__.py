@@ -22,7 +22,7 @@ else:
 
 db = SQLAlchemy(app)
 
-from recipes_api.models import Account
+from recipes_api.models import Recipe
 db.create_all()
 CORS(app)
 
