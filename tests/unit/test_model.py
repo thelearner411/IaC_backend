@@ -7,9 +7,9 @@ def test_create_recipe():
     WHEN a new Recipe is created
     THEN check the name, ingredients, steps, rating, favourite fields are defined correctly
     """
-    recipe = Recipe('Milkshake', 'milk', 'Pour milk.')
+    recipe = Recipe('Milkshake', 'milk', 'Pour milk.', 5, True)
     assert recipe.name == 'Milkshake'
     assert recipe.ingredients == 'milk'
     assert recipe.steps == 'Pour milk.'
-    assert recipe.rating == 0.0
-    assert recipe.favourite == False
+    assert recipe.rating == 5
+    assert recipe.favourite == True

@@ -26,7 +26,7 @@ def test_create_recipe(testing_client):
     WHEN the '/recipe' page is posted to (POST)
     THEN check the response is valid
     """
-    response = testing_client.post('/recipes', json={'name': 'Milkshake', 'ingredients': 'milk', 'steps': 'Pour milk.', 'rating': 4, 'favourite': True})
+    response = testing_client.post('/recipes', json={'name': 'Milkshake', 'ingredients': 'milk', 'steps': 'Pour milk.', 'rating': 5, 'favourite': True})
     assert response.status_code == 200
 
 def test_get_recipe(testing_client):
@@ -44,7 +44,7 @@ def test_update_recipe(testing_client):
     WHEN the '/recipes' page is requested (GET)
     THEN check the response is valid
     """
-    response = testing_client.put('/recipes/1', json={'name': 'Boiled Egg', 'ingredients': 'egg, water', 'steps': 'Place pan of water over medium heat for 5 minutes. Add egg and leave for 8 minutes before removing from fire.', 'rating': 3.0, 'favourite': True})
+    response = testing_client.put('/recipes/1', json={'name': 'Boiled Egg', 'ingredients': 'egg, water', 'steps': 'Place pan of water over medium heat for 5 minutes. Add egg and leave for 8 minutes before removing from fire.', 'rating': 3, 'favourite': True})
     assert response.status_code == 200
 
 def test_delete_account(testing_client):
