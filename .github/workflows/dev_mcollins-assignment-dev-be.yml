@@ -6,8 +6,9 @@ name: Build and deploy Python project to Azure Function App - mcollins-assignmen
 
 on:
   push:
-    branches:
-      - dev
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
   workflow_dispatch:
 
 jobs:
