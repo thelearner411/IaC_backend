@@ -13,10 +13,10 @@ on:
 env:
   PYTHON_VERSION: '3.10' # set this to the python version to use (supports 3.6, 3.7, 3.8)
   ENV: dev
-  DBHOST: secrets.DBHOST
-  DBUSER: secrets.DBUSER
-  DBPASS: secrets.DBPASS
-  DBNAME: secrets.DBNAME
+  DBHOST: jseijas-dbsrv.postgres.database.azure.com
+  DBUSER: postgres@jseijas-dbsrv.postgres.database.azure.com
+  DBPASS: Pa$$w0rd1990
+  DBNAME: mcollins-assignment-dev-db
 
 
 jobs:
