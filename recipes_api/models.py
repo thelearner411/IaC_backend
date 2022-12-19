@@ -7,7 +7,7 @@ class Recipe(db.Model):
     name = db.Column(db.String(255), nullable=False)
     ingredients = db.Column(db.String(2000), nullable=False)
     steps = db.Column(db.String(2000), nullable=False)
-    rating = db.Column(db.Float, nullable=False, default=0.0)
+    rating = db.Column(db.Integer, nullable=False, default=1)
     favourite = db.Column(db.Boolean, nullable=False, default=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
