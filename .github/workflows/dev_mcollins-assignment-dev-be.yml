@@ -10,6 +10,14 @@ on:
   pull_request:
     branches: [ "main", "dev" ]
   workflow_dispatch:
+  
+env:
+      PYTHON_VERSION: '3.10' # set this to the python version to use (supports 3.6, 3.7, 3.8)
+      ENV: dev
+      DBHOST: secrets.DBHOST
+      DBUSER: secrets.DBUSER
+      DBPASS: secrets.DBPASS
+      DBNAME: secrets.DBNAME
 
 jobs:
   build:
@@ -46,13 +54,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    env:
-      PYTHON_VERSION: '3.10' # set this to the python version to use (supports 3.6, 3.7, 3.8)
-      ENV: dev
-      DBHOST: secrets.DBHOST
-      DBUSER: secrets.DBUSER
-      DBPASS: secrets.DBPASS
-      DBNAME: secrets.DBNAME
     environment:
       name: 'Development'
       url: ${{ steps.deploy-to-function.outputs.webapp-url }}
