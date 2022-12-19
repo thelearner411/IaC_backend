@@ -17,6 +17,8 @@ def create_recipe():
     name = request.json['name']
     ingredients = request.json['ingredients']
     steps = request.json['steps']
+    rating = request.json['rating']
+    favourite = request.json['favourite']
     recipe = Recipe(name, ingredients, steps)
     db.session.add(recipe)
     db.session.commit()

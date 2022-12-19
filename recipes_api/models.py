@@ -14,9 +14,9 @@ class Recipe(db.Model):
     def __repr__(self):
         return '<Event %r>' % self.name
 
-    def __init__(self, name, ingredients, steps):
+    def __init__(self, name, ingredients, steps, rating, favourite):
         self.name = name
         self.ingredients = ingredients
         self.steps = steps
-        self.rating = 0.0
-        self.favourite = False
+        self.rating = rating
+        self.favourite = favourite
