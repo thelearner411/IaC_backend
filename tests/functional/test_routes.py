@@ -26,7 +26,7 @@ def test_create_recipe(testing_client):
     WHEN the '/recipe' page is posted to (POST)
     THEN check the response is valid
     """
-    response = testing_client.post('/recipes', json={'name': 'Milkshake', 'ingredients': 'milk', 'steps': 'Pour milk.', 'rating': 5, 'favourite': True})
+    response = testing_client.post('/recipes/', json={'name': 'Milkshake', 'ingredients': 'milk', 'steps': 'Pour milk.', 'rating': 5, 'favourite': True})
     assert response.status_code == 200
 
 def test_get_recipe(testing_client):
