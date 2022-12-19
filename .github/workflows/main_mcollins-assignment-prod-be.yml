@@ -2,12 +2,13 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Build and deploy Python app to Azure Web App - mcollins-assignment-prod-be
+name: Build and deploy Python app to Azure Web App - mcollins-assignment-deployments-be
 
 on:
   push:
     branches:
       - main
+      - dev
   workflow_dispatch:
   
 env:
@@ -52,7 +53,7 @@ jobs:
             . 
             !venv/
 
-  deploy:
+  deploy-prod:
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -73,3 +74,25 @@ jobs:
           app-name: 'mcollins-assignment-prod-be'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_04DE35016F8043A0B4E71CAEA361AE1F }}
+
+  deploy-dev:
+      runs-on: ubuntu-latest
+      needs: build
+      environment:
+        name: 'Development'
+        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+      steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v2
+          with:
+            name: python-app
+            path: .
+
+        - name: 'Deploy to Azure Web App'
+          uses: azure/webapps-deploy@v2
+          id: deploy-to-webapp
+          with:
+            app-name: 'mcollins-assignment-dev-be'
+            slot-name: 'Development'
+            publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_04DE35016F8043A0B4E71CAEA361AE1F }}
