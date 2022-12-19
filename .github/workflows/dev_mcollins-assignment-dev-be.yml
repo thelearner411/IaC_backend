@@ -11,7 +11,6 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
   PYTHON_VERSION: '3.10' # set this to the python version to use (supports 3.6, 3.7, 3.8)
   ENV: ghci
   DBHOST: secrets.DBHOST
@@ -71,7 +70,7 @@ jobs:
         id: deploy-to-function
         with:
           app-name: 'mcollins-assignment-dev-be'
-          slot-name: 'Production'
+          slot-name: 'Development'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E59CE09640A543A7ABA2643E9339E28C }}
           scm-do-build-during-deployment: true
