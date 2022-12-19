@@ -6,7 +6,7 @@ from recipes_api import db, app
 @pytest.fixture
 def testing_client(scope='module'):
     db.create_all()
-    account = Recipe('Sandwich Recipe', 'bread, cheese', '1. Place cheese between bread slices')
+    account = Recipe('Sandwich Recipe', 'bread, cheese', '1. Place cheese between bread slices', 4, True)
     db.session.add(account)
     db.session.commit()
 
