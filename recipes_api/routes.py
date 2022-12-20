@@ -19,7 +19,7 @@ def create_recipe():
     steps = request.json['steps']
     rating = request.json['rating']
     favourite = request.json['favourite']
-    recipe = Recipe(name, ingredients, steps)
+    recipe = Recipe(name, ingredients, steps, rating, favourite)
     db.session.add(recipe)
     db.session.commit()
     return format_recipe(recipe)
